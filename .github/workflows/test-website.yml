@@ -20,6 +20,9 @@ jobs:
         - name: Run tests
           working-directory: ./basic-website
           run: npm test
+        - name: Lint
+          working-directory: ./basic-website
+          run: npm run lint
     deploy:
       # Waits for mentioned jobs to finish succesfully before running
       needs: test
