@@ -1,0 +1,20 @@
+# Name of workflow
+name: Basic Workflow
+# When the workflow is triggered
+# workflow_dispatch - manual triggered
+on: workflow_dispatch
+
+jobs:
+  # Job name
+  first-job:
+    # Environment on what the job runs
+    # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
+    runs-on: ubuntu-latest
+    # Like tasks in Ansible; simple actions
+    steps:
+      # Name of the step
+      - name: Print greeting
+        # Run: command line
+        run: echo "Hello World!"
+      - name: Print goodbye
+        run: echo "Goodbye!"
