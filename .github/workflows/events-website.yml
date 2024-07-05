@@ -1,9 +1,30 @@
 # Skipping workflow: https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
 name: Events Demo 1
 on:
+  # Event
   pull_request:
+    # Activity types
     types: [opened, edited]
+    # Filter to use only mentioned branches
+    branches:
+      - master
+      # Anything beside /
+      - 'dev-*'
+      # Any branch that begins with feature/ , accepts slashes
+      - 'feature/**'
   workflow_dispatch:
+  push:
+    # Filter to use only mentioned branches
+    branches:
+      - master
+      - main
+      # Anything beside /
+      - 'dev-*'
+      # Any branch that begins with feature/ , accepts slashes
+      - 'feature/**'
+    # Does not trigger for mentioned paths
+    paths-ignore:
+      - '.github/workflows/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
