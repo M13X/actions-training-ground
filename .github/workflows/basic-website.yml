@@ -20,6 +20,9 @@ jobs:
         - name: Run tests
           working-directory: ./basic-website
           run: npm test
+    lint:
+      runs-on: ubuntu-latest
+      steps:
         - name: Lint
           working-directory: ./basic-website
           run: npm run lint
