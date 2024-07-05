@@ -16,6 +16,7 @@ on:
     # Filter to use only mentioned branches
     branches:
       - master
+      - main
       # Anything beside /
       - 'dev-*'
       # Any branch that begins with feature/ , accepts slashes
