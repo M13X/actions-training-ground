@@ -9,7 +9,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
         with:
-          sparse-checkout: /events-website/*
+          sparse-checkout: events-website/*
       - name: Install dependencies
         run: npm ci
       - name: Test code
