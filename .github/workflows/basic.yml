@@ -10,11 +10,12 @@ jobs:
     # Environment on what the job runs
     # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
     runs-on: ubuntu-latest
-    # Like tasks in Ansible; simple actions
+    # Like tasks in Ansible; simple commands
     steps:
       # Name of the step
       - name: Print greeting
-        # Run: command line
+        # An action (like module)
+        # Run: shell command
         run: echo "Hello World!"
       - name: Print goodbye
         run: echo "Goodbye!"
