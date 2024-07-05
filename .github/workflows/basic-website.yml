@@ -23,12 +23,21 @@ jobs:
     lint:
       runs-on: ubuntu-latest
       steps:
+        - name: Get code
+          uses: actions/checkout@v4
+        - name: Install NodeJS
+          uses: actions/setup-node@v4
+          with:
+            node-version: 18
+        - name: Install dependencies
+          working-directory: ./basic-website
+          run: npm ci
         - name: Lint
           working-directory: ./basic-website
           run: npm run lint
     deploy:
       # Waits for mentioned jobs to finish succesfully before running
-      needs: test
+      needs: [test, lint]
       runs-on: ubuntu-latest
       steps:
         - name: Get code
