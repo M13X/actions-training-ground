@@ -15,8 +15,8 @@ jobs:
               with:
                 node-version: 18
             - name: Install dependencies
-              run: |
-                cd ./basic-website
-                npm ci
+              working-directory: ./basic-website
+              run: npm ci
             - name: Run tests
+              working-directory: ./basic-website
               run: npm test
