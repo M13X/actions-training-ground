@@ -7,4 +7,4 @@ jobs:
       - name: Output GitHub context
         # https://docs.github.com/en/actions/learn-github-actions/contexts
         # https://docs.github.com/en/actions/learn-github-actions/expressions
-        run: echo "${{ toJson(github) }}"
+        run: echo "${{ toJson(github.event) }}"
