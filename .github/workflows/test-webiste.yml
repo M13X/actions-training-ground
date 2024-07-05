@@ -21,7 +21,7 @@ jobs:
           working-directory: ./basic-website
           run: npm test
     deploy:
-      # Waits for mentioned jobs to finish before running
+      # Waits for mentioned jobs to finish succesfully before running
       needs: test
       runs-on: ubuntu-latest
       steps:
