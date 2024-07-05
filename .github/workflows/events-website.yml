@@ -11,6 +11,8 @@ jobs:
         with:
           sparse-checkout: events-website
           sparse-checkout-cone-mode: true
+      - name: print project
+        run: ls -R
       - name: Install dependencies
         run: npm ci
       - name: Test code
