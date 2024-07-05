@@ -1,0 +1,20 @@
+name: Test basic-website
+on: push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code
+              # Specify the used action
+              # Download repository
+              uses: actions/checkout@v4
+              # Options for mentioned action
+              # with:
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            - name: Install dependencies
+              run: npm ci
+            - name: Run tests
+              run: npm test
