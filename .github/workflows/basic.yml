@@ -4,6 +4,7 @@ name: Basic Workflow
 # workflow_dispatch - manual triggered
 on: workflow_dispatch
 
+# Run in parallel by default
 jobs:
   # Job name
   first-job:
