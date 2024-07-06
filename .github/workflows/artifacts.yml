@@ -39,9 +39,7 @@ jobs:
           # Name of artifact
           name: dist-files
           # Files to be added to artifact
-          path: |
-            dist
-            package.json
+          path: events-website/dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
