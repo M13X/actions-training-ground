@@ -1,5 +1,5 @@
 # Skipping workflow: https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
-name: Events Demo 1
+name: Events website
 on:
   # Event
   pull_request:
