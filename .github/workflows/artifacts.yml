@@ -24,7 +24,7 @@ jobs:
       - name: debug
         run: npm list
       - name: debug2
-        run: ls
+        run: ls node_modules
       - name: Lint code
         run: npm run lint
       - name: Test code
