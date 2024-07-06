@@ -44,5 +44,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          # Same name as upload artifcats
+          name: dist-files
+      # Files will be unzipped into root    
+      - name: Check output
+        run: ls
       - name: Deploy
         run: echo "Deploying..."
