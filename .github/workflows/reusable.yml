@@ -1,0 +1,10 @@
+name: Reusable workflow
+# Runs when it is called
+# I called it in controlling-workflow.yml
+on: workflow_call
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Output information
+      run: echo "Something"
