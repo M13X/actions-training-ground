@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
-name: Eviropnment variables
+name: Environment variables
 on:
   push:
     branches:
@@ -9,6 +9,8 @@ env:
   MONGODB_DB_NAME: database_demo
 jobs:
   test:
+    # Environment settings from github repo settings -> environments
+    environment: testing
     env:
       MONGODB_CLUSTER_ADDRESS: learning-cluster.aecfiri.mongodb.net
       # Can add important information as secrets by configuring repository
