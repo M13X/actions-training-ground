@@ -85,3 +85,14 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    # If it would run in parallel, no job would fail at that time and this would be skipped
+    needs: [lint, deploy]
+    # If another job failed, this job will run
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: |
+          echo "Something went wrong"
+          echo "${{ github }}"
