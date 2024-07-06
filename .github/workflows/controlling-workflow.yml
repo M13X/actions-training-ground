@@ -83,6 +83,9 @@ jobs:
     needs: build
     # Using another workflow
     uses: ./.github/workflows/reusable.yml
+    # Can also provide a value to the other workflow
+    with:
+      artifact-name: dist-files
   report:
     # If it would run in parallel, no job would fail at that time and this would be skipped
     needs: [lint, deploy]
