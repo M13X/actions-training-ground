@@ -1,4 +1,4 @@
-name: Deployment (Container)
+name: Docker Containers
 on:
   push:
     branches:
@@ -9,8 +9,9 @@ env:
   MONGODB_DB_NAME: database_demo
 jobs:
   test:
-    #environment: testing
     runs-on: ubuntu-latest
+    container:
+      image: node:16
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: learning-cluster.aecfiri.mongodb.net
