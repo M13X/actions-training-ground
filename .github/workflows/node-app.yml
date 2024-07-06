@@ -1,3 +1,4 @@
+# https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
 name: Eviropnment variables
 on:
   push:
@@ -10,8 +11,9 @@ jobs:
   test:
     env:
       MONGODB_CLUSTER_ADDRESS: learning-cluster.aecfiri.mongodb.net
-      MONGODB_USERNAME: db-user
-      MONGODB_PASSWORD: LobwO1qYdk5diWCD
+      # Can add important information as secrets by configuring repository
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
     runs-on: ubuntu-latest
     defaults:
@@ -35,7 +37,7 @@ jobs:
         # To access an environment variable any of these methods
         run: | 
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
-          echo "MONGO_DB_NAME: $MONGO_DB_NAME"
+          echo "MONGO_DB_NAME: $MONGODB_DB_NAME"
         # The last one is shell based, therefore it will not work on Windows
   deploy:
     needs: test
