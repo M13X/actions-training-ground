@@ -18,9 +18,13 @@ jobs:
           # Name that changes when contents of a file change, knowing it has to cache again
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} 
           # Path you want cache
-          path: ~/events-website/.npm
+          path: events-website/node_modules
       - name: Install dependencies
         run: npm ci
+      - name: debug
+        run: npm list
+      - name: debug2
+        run: ls node_modules
       - name: Lint code
         run: npm run lint
       - name: Test code
@@ -43,7 +47,7 @@ jobs:
           # Name that changes when contents of a file change, knowing it has to cache again
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} 
           # Path you want cache
-          path: ~/.npm
+          path: events-website/node_modules
       - name: Install dependencies
         run: npm ci
       - name: Build website
