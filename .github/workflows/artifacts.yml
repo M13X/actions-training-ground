@@ -1,4 +1,4 @@
-name: Deploy website
+name: Artifacts and Cache
 on:
   push:
     branches:
