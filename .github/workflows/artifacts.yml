@@ -37,12 +37,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Cache dependencies
+        # Searches for cache, if it doesnt exist, it adds it at the end of the job
         uses: actions/cache@v4
         with:
           # Name that changes when contents of a file change, knowing it has to cache again
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} 
           # Path you want cache
-          path: ~/events-website/.npm
+          path: ~/.npm
       - name: Install dependencies
         run: npm ci
       - name: Build website
