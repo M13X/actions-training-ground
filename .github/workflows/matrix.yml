@@ -2,6 +2,8 @@ name: Matrix
 on: push
 jobs:
   build:
+    # Continues if job fails. Therefore the other os/node-versions will not be canceled
+    continue-on-error: true
     strategy:
       matrix:
         node-version: [12, 14, 16]
