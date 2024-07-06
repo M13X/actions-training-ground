@@ -4,29 +4,39 @@ on:
     branches:
       - main
       - dev
+env:
+  MONGODB_DB_NAME: database_demo
 jobs:
   test:
-    environment: testing
+    env:
+      MONGODB_CLUSTER_ADDRESS: learning-cluster.aecfiri.mongodb.net
+      MONGODB_USERNAME: db-user
+      MONGODB_PASSWORD: LobwO1qYdk5diWCD
+      PORT: 8080
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: node-app
     steps:
       - name: Get Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:XYZ
+        run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "..."
+        # To access an environment variable any of these methods
+        run: | 
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+          echo "MONGO_DB_NAME: $MONGO_DB_NAME"
+        # The last one is shell based, therefore it will not work on Windows
   deploy:
     needs: test
     runs-on: ubuntu-latest
