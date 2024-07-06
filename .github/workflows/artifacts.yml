@@ -23,6 +23,8 @@ jobs:
         run: npm ci
       - name: debug
         run: npm list
+      - name: debug2
+        run: ls
       - name: Lint code
         run: npm run lint
       - name: Test code
