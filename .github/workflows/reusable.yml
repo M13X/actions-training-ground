@@ -11,8 +11,17 @@ on:
         # If required is false can use a default value
         # default: name
         type: string
+    outputs:
+      result:
+        description: The result of deployment
+        value: ${{ jobs.deploy.outputs.outcome }}
+#    secrets:
+#      my-secret:
+#        required: false
 jobs:
   deploy:
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
     - name: Get Code
@@ -23,3 +32,6 @@ jobs:
       run: tree
     - name: Output information
       run: echo "Something"
+    - name: Set result output
+      id: set-result
+      run: echo "step-result=success" >> $GITHUB_OUTPUT

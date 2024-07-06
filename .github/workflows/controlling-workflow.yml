@@ -86,6 +86,14 @@ jobs:
     # Can also provide a value to the other workflow
     with:
       artifact-name: dist-files
+#    secrets:
+#      my-secret: ${{ secrets.my-set-secret }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy result
+        run: echo "${{ needs.deploy.outputs.result }}"
   report:
     # If it would run in parallel, no job would fail at that time and this would be skipped
     needs: [lint, deploy]
