@@ -5,6 +5,10 @@ inputs:
     description: 'Turn caching on/off (default: true)'
     required: false
     default: 'true'
+  run-path:
+    description: 'On which working-directory the run commands will apply'
+    required: false
+    default: '.'
 outputs:
   used-cache:
     description: 'Output if cache was used or not'
@@ -23,6 +27,7 @@ runs:
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       id: install
       shell: bash
+      working-directory: ${{ inputs.run-path }}
       run: |
         npm ci
         echo "cache='${{ inputs.caching }}'" >> $GITHUB_OUTPUT

@@ -17,6 +17,7 @@ jobs:
         # Using inputs for composite action
         with:
           caching: 'false'
+          run-path: 'custom-actions'
         # If there is another repository specialized only for actions it could be used like this
         # uses: M13X/my-action
         # Since this is a local defined action it is used like this:
@@ -38,6 +39,8 @@ jobs:
         # uses: M13X/my-action
         # Since this is a local defined action it is used like this:
         uses: ./.github/actions/cached-deps
+        with:
+          run-path: 'custom-actions'
       - name: Test code
         id: run-tests
         run: npm run test
@@ -61,6 +64,8 @@ jobs:
         # uses: M13X/my-action
         # Since this is a local defined action it is used like this:
         uses: ./.github/actions/cached-deps
+        with:
+          run-path: 'custom-actions'
       - name: Build website
         run: npm run build
       - name: Upload artifacts
