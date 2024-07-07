@@ -13,8 +13,11 @@ jobs:
     container:
       image: node:16
     env:
-      MONGODB_CONNECTION_PROTOCOL: mongodb+srv
-      MONGODB_CLUSTER_ADDRESS: learning-cluster.aecfiri.mongodb.net
+      MONGODB_CONNECTION_PROTOCOL: mongodb
+      # If job runs into a container, then we can use the service name
+      MONGODB_CLUSTER_ADDRESS: mongo-db
+      # If the job doesnt run in conainter then we must use the localhost and exposed port
+      # MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: pass
       PORT: 8080
@@ -22,11 +25,13 @@ jobs:
       run:
         working-directory: docker
     services:
-      mongodb:
+      mongo-db:
         image: mongo
         env:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: pass
+        #ports:
+        #  - 27017:27017
     steps:
       - name: Get Code
         uses: actions/checkout@v4
