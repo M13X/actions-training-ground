@@ -13,6 +13,9 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Load & cache dependencies
+        # Using inputs for composite action
+        with:
+          caching: 'false'
         # If there is another repository specialized only for actions it could be used like this
         # uses: M13X/my-action
         # Since this is a local defined action it is used like this:
