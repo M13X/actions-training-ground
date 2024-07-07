@@ -27,15 +27,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: custom-actions/node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Load & cache dependencies
+        # If there is another repository specialized only for actions it could be used like this
+        # uses: M13X/my-action
+        # Since this is a local defined action it is used like this:
+        uses: ./.github/actions/cached-deps
       - name: Test code
         id: run-tests
         run: npm run test
