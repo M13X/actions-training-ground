@@ -69,7 +69,7 @@ jobs:
       - name: Get build artifacts
         uses: actions/download-artifact@v4
         with:
-          # Same name as upload artifcats
+          # Same name as upload artifacts
           name: dist-files
       # Files will be unzipped into root    
       - name: Check output
